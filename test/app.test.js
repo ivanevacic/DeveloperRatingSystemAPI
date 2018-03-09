@@ -18,7 +18,8 @@ describe('CRUD Developers', () => {
             }).then(() => done());
     });
 
-    it('Lists all Records', (done) => {
+    //  Test for '/' route
+    it('Lists all Developers', (done) => {
         request(app)
             .get('/api/v1/developers')
             .set('Accept', 'application/json')
@@ -29,4 +30,18 @@ describe('CRUD Developers', () => {
                 done();            
         });
     });
+
+    //  Test for '/:id' route
+    it('Lists all Developers by ID', (done) => {
+        request(app)
+            .get('/api/v1/developers/1')
+            .set('Accept', 'application/json')
+            .expect('Content-Type', /json/)
+            .expect(200)
+            .then((response) => {
+                expect(response.body).to.be.a('object');
+                done();            
+        });
+    });
+
 });
