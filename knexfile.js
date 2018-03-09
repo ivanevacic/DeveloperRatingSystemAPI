@@ -16,7 +16,7 @@ module.exports = {
       host: '127.0.0.1',
       user: 'postgres',
       password: 'ivan',
-      database: 'developer-rating-syste-test'
+      database: 'developer-rating-system-test'
     }
   }
 };
