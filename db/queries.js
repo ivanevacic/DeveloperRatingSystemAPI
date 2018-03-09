@@ -11,5 +11,8 @@ module.exports = {
     getOne(id) {
         //  Show developer information
         return knex('developer').where('id', id).first();
+    },
+    create(developer) {
+        return knex('developer').insert(developer, '*') //  Returns all the properties of developer => array
     }
 }

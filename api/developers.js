@@ -12,6 +12,15 @@ function isValidId(req, res, next) {
     next(new Error('Invalid ID'));
 }
 
+function validDeveloper(developer) {
+    //  Check if a full name is a string and isn't  empty
+    const hasFirstName = typeof developer.full_name == 'string' && developer.full_name.trim() != '';
+    //  Check if a position is a string and isn't  empty
+    const hasPosition = typeof developer.position == 'string' && developer.position.trim() != '';
+    //  If returns true,both values are valid
+    return hasFirstName && hasPosition;
+}
+
 router.get('/', (req, res) => {
     queries.getAll()
         //  Execute getAll function in db/queries
@@ -36,6 +45,18 @@ router.get('/:id', isValidId, (req, res, next) => {
                     next();
                 }
             });          
+});
+
+router.post('/', (req, res, next) => {
+    if(validDeveloper(req.body)) {
+        //  Insert into db
+        queries.create(req.body).then(developer => {
+            //  Needs to be developer[0],because create() returns array(only 1 element -> [0])
+            res.json(developer[0]);
+        });
+    } else  {
+        next(new Error('Invalid developer'));
+    }
 });
 
 //  Export router so it can be used outside this folder
