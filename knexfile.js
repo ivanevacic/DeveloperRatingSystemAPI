@@ -4,7 +4,7 @@ module.exports = {
     client: 'pg', //  PostgresSQL
     connection: {
       host: '127.0.0.1',
-      user: 'ivan',
+      user: 'postgres',
       password: '21031996',
       database: 'devratingsystem'
     }
@@ -14,7 +14,7 @@ module.exports = {
     client: 'pg',
     connection: {
       host: '127.0.0.1',
-      user: 'ivan',
+      user: 'postgres',
       password: '21031996',
       database: 'devratingsystemtest'
     }
