@@ -5,7 +5,7 @@ module.exports = {
     connection: {
       host: '127.0.0.1',
       user: 'postgres',
-      password: 'ivan',
+      password: '1234',
       database: 'developer-rating-system'
     }
   },
@@ -15,7 +15,7 @@ module.exports = {
     connection: {
       host: '127.0.0.1',
       user: 'postgres',
-      password: 'ivan',
+      password: '1234',
       database: 'developer-rating-system-test'
     }
   }
