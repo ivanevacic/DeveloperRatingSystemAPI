@@ -4,9 +4,9 @@ module.exports = {
     client: 'pg', //  PostgresSQL
     connection: {
       host: '127.0.0.1',
-      user: 'postgres',
-      password: '1234',
-      database: 'developer-rating-system'
+      user: 'ivan',
+      password: '21031996',
+      database: 'devratingsystem'
     }
   },
   //  Testing database
@@ -14,9 +14,9 @@ module.exports = {
     client: 'pg',
     connection: {
       host: '127.0.0.1',
-      user: 'postgres',
-      password: '1234',
-      database: 'developer-rating-system-test'
+      user: 'ivan',
+      password: '21031996',
+      database: 'devratingsystemtest'
     }
   }
 };
