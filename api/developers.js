@@ -23,10 +23,19 @@ router.get('/', (req, res) => {
 
 //  everytime this request is called,if isValidId return true it will continue working,else
 //  it will show error
-router.get('/:id', isValidId, (req, res) => {
-    res.json({
-        message: 'Hello'
-    })
+router.get('/:id', isValidId, (req, res, next) => {
+    queries.getOne(req.params.id)
+            .then(developer => {
+                //  If function returns id,show it
+                if(developer) {
+                    res.json(developer);
+                }
+                //  Else
+                else {
+                    //  Forwards to error handler in app.js
+                    next();
+                }
+            });          
 });
 
 //  Export router so it can be used outside this folder
