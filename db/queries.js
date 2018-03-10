@@ -21,5 +21,9 @@ module.exports = {
     },
     delete(id) {
         return knex('developers').where('id', id).del();
+    },
+    //  Auth route function
+    getOneByEmail(email) {
+        return knex('users').where('email', email).first();
     }
 }

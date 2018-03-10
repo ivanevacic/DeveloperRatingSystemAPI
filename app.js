@@ -10,6 +10,8 @@ const app = express();
 
 //  Import route into app.js
 const developers = require('./api/developers');
+//  Import auth route
+const auth = require('./auth/index');
 
 //  uncomment after placing your favicon in /public
 //  app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
@@ -21,6 +23,7 @@ app.use(cookieParser());
 //  Mount route
   //  First param is url where we use this route
 app.use('/api/v1/developers', developers);
+app.use('/auth', auth);
 
 
 //  catch 404 and forward to error handler
