@@ -30,9 +30,9 @@ describe('CRUD Developers', () => {
             .expect(200)
             .then((response) => {
                 expect(response.body).to.be.a('array');
-                expect(response.body).to.deep.equal(fixtures.developers);
-                done();            
+                expect(response.body).to.deep.equal(fixtures.developers);                       
         });
+        done();
     });
 
     //  Test for '/:id' route
@@ -44,9 +44,9 @@ describe('CRUD Developers', () => {
             .expect(200)
             .then((response) => {
                 expect(response.body).to.be.a('object');
-                expect(response.body).to.deep.equal(fixtures.developers[0]);
-                done();            
+                expect(response.body).to.deep.equal(fixtures.developers[0]);                           
         });
+        done();
     });
 
     //  Test for post '/' route
@@ -62,10 +62,11 @@ describe('CRUD Developers', () => {
                 fixtures.developer.id = response.body.id;
                 expect(response.body).to.deep.equal(fixtures.developer);
             });
+            done();
     });
 
     //  Test for put '/:id' route
-    it('Creates developer', (done) => {
+    it('Updates developer', (done) => {
         request(app)
             .put('/api/v1/developers/1')
             .send(fixtures.developer)
@@ -76,6 +77,24 @@ describe('CRUD Developers', () => {
                 expect(response.body).to.be.a('object');
                 fixtures.developer.id = response.body.id;
                 expect(response.body).to.deep.equal(fixtures.developer);
+            });
+            done();
+    });
+
+    //  Test for delete '/:id' route
+    it('Deletes developer', (done) => {
+        request(app)
+            .delete('/api/v1/developers/1')
+            .send(fixtures.developer)
+            .set('Accept', 'application/json')
+            .expect('Content-Type', /json/)
+            .expect(200)
+            .then((response) => {
+                expect(response.body).to.be.a('object');
+                expect(response.body).to.deep.equal({
+                    deleted: true
+                });
+                done();
             });
     });
 
