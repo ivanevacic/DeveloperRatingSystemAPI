@@ -5,7 +5,7 @@
   "scripts": {
     "start": "node ./bin/www",
     "dev": "nodemon",
-    "test": "(dropdb --if-exists developer-rating-system && createdb developer-rating-system) && NODE_ENV=test mocha"
+    "test": "(dropdb --if-exists devratingsystemtest && createdb devratingsystemtest) && NODE_ENV=test mocha"
   },
   "dependencies": {
     "body-parser": "~1.18.2",
