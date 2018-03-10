@@ -14,5 +14,9 @@ module.exports = {
     },
     create(developer) {
         return knex('developer').insert(developer, '*') //  Returns all the properties of developer => array
+    },
+    update(id, developer) {
+        //  Check if id is valid,pass update
+        return knex('developer').where('id', id).update(developer, '*');
     }
 }

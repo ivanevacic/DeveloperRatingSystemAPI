@@ -47,6 +47,7 @@ router.get('/:id', isValidId, (req, res, next) => {
             });          
 });
 
+//  Add developer post
 router.post('/', (req, res, next) => {
     if(validDeveloper(req.body)) {
         //  Insert into db
@@ -55,6 +56,20 @@ router.post('/', (req, res, next) => {
             res.json(developer[0]);
         });
     } else  {
+        next(new Error('Invalid developer'));
+    }
+});
+
+//  Update developer
+router.put('/:id', isValidId, (req, res, next) => {
+    //  If update values are valid
+    if(validDeveloper(req.body)) {
+        //  Update developer
+        queries.update(req.params.id, req.body)
+                .then(developer => {
+                    res.json(developer[0]);
+                });
+    } else {
         next(new Error('Invalid developer'));
     }
 });
