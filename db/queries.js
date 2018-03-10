@@ -18,5 +18,8 @@ module.exports = {
     update(id, developer) {
         //  Check if id is valid,pass update
         return knex('developer').where('id', id).update(developer, '*');
+    },
+    delete(id) {
+        return knex('developer').where('id', id).del();
     }
 }

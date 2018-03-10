@@ -74,5 +74,15 @@ router.put('/:id', isValidId, (req, res, next) => {
     }
 });
 
+//  Delete developer
+router.delete('/:id', isValidId, (req, res) => {
+    queries.delete(req.params.id)
+        .then(() => {
+            res.json({
+                deleted: true
+            });
+        });
+});
+
 //  Export router so it can be used outside this folder
 module.exports = router;
