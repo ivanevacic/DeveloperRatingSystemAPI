@@ -64,4 +64,19 @@ describe('CRUD Developers', () => {
             });
     });
 
+    //  Test for put '/:id' route
+    it('Creates developer', (done) => {
+        request(app)
+            .put('/api/v1/developers/1')
+            .send(fixtures.developer)
+            .set('Accept', 'application/json')
+            .expect('Content-Type', /json/)
+            .expect(200)
+            .then((response) => {
+                expect(response.body).to.be.a('object');
+                fixtures.developer.id = response.body.id;
+                expect(response.body).to.deep.equal(fixtures.developer);
+            });
+    });
+
 });
