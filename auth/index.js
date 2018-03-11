@@ -34,7 +34,7 @@ router.post('/signup', (req, res, next) => {
                         //  then email is unique(GOOD)
                         res.json({
                             user,
-                            message: 'Entered password is unique'
+                            message: 'Entered email is unique'
                         });
                     } else {
                         //  email in use
