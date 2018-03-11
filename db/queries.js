@@ -25,5 +25,9 @@ module.exports = {
     //  Auth route function
     getOneByEmail(email) {
         return knex('users').where('email', email).first();
+    },
+    //  Register route function
+    registerUser(user) {
+        return knex('users').insert(user, '*')
     }
 }
