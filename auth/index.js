@@ -37,13 +37,13 @@ router.post('/signup', (req, res, next) => {
                             bcrypt.hash(req.body.password, 10)  //  saltRounds -> higher number,longer it takes to compute hash
                                     .then((hash) =>  {
                                     //  insert user into db
-                                        //  define user
+                                        //  define user we will insert into db
                                         const user = {
                                             email: req.body.email,  //  user's email
                                             password: hash, //  hashed password we 'created' from user's password
                                             date: new Date()  //    timestamp when user registered
                                         };
-                                            //  
+                                            //  call function from db/queries.js that saves data in db
                                             queries.registerUser(user)
                                                     .then(user => {
                                                         res.json({
